@@ -19,7 +19,8 @@ function addMod(a, b, m) {
     const bigA = BigInt(a);
     const bigB = BigInt(b);
     const bigM = BigInt(m);
-    return Number((bigA % bigM + bigB % bigM) % bigM);
+    let rel = (bigA % bigM + bigB % bigM) % bigM;
+    return Number(rel);
 }
 
 function subMod(a, b, m) {
@@ -99,11 +100,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-
-        const a = parseInt(document.getElementById('a').value);
-        const b = parseInt(document.getElementById('b').value);
-        const m = parseInt(document.getElementById('m').value);
-
+        const a = BigInt(document.getElementById('a').value);
+        const b = BigInt(document.getElementById('b').value);
+        const m = BigInt(document.getElementById('m').value);
         const currentPage = window.location.pathname.split('/').pop();
         let result;
 
@@ -133,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log('Unknown page');
                     return;
             }
+
         } catch (error) {
             displayError(error.message);
         }
