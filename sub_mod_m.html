@@ -220,60 +220,20 @@
 
             <button type="button" class="clear-all-btn" id="clear-all">Clear All</button>
             <button type="submit" class="submit-btn">Calculate</button>
-        </form </div>
+        </form>
+    </div>
 
-        <div class="result-box" id="result-box">
-            <div class="result-header">
-                <div class="result-title">Result</div>
-                <button class="close-btn" id="close-btn">&times;</button>
-            </div>
-            <div class="result-value" id="result-value"></div>
+    <div class="overlay" id="overlay" onclick="closeResult()"></div>
+
+    <div class="result-box" id="result-box">
+        <div class="result-header">
+            <div class="result-title">Output</div>
+            <button class="close-btn" onclick="closeResult()">×</button>
         </div>
+        <div class="result-value" id="result-value"></div>
+    </div>
 
-        <div class="overlay" id="overlay"></div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const form = document.querySelector('form');
-                const resultBox = document.getElementById('result-box');
-                const resultValue = document.getElementById('result-value');
-                const overlay = document.getElementById('overlay');
-                const closeBtn = document.getElementById('close-btn');
-                const clearAllBtn = document.getElementById('clear-all');
-
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    const a = parseInt(document.getElementById('a').value);
-                    const b = parseInt(document.getElementById('b').value);
-                    const m = parseInt(document.getElementById('m').value);
-
-                    const result = (a - b) % m;
-
-                    resultValue.textContent = `(${a} - ${b}) mod ${m} = ${result}`;
-                    resultBox.style.display = 'block';
-                    overlay.style.display = 'block';
-                });
-
-                closeBtn.addEventListener('click', function () {
-                    resultBox.style.display = 'none';
-                    overlay.style.display = 'none';
-                });
-
-                clearAllBtn.addEventListener('click', function () {
-                    document.getElementById('a').value = '';
-                    document.getElementById('b').value = '';
-                    document.getElementById('m').value = '';
-                });
-
-                document.querySelectorAll('.clear-btn').forEach(button => {
-                    button.addEventListener('click', function () {
-                        const targetId = this.getAttribute('data-target');
-                        document.getElementById(targetId).value = '';
-                    });
-                });
-            });
-        </script>
+    <script src="modular_calc.js"></script>
 </body>
 
 </html>

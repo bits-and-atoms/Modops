@@ -12,30 +12,30 @@ function powerMod(a, b, m) {
         bigB = bigB / BigInt(2);
         bigA = (bigA * bigA) % bigM;
     }
-    return Number(ans);
+    return ans;
 }
 
 function addMod(a, b, m) {
     const bigA = BigInt(a);
     const bigB = BigInt(b);
     const bigM = BigInt(m);
-    let rel = (bigA % bigM + bigB % bigM) % bigM;
-    return Number(rel);
+    return (bigA % bigM + bigB % bigM) % bigM;
 }
 
 function subMod(a, b, m) {
     const bigA = BigInt(a);
     const bigB = BigInt(b);
     const bigM = BigInt(m);
-    return Number(((bigA % bigM - bigB % bigM) + bigM) % bigM);
+    return ((bigA % bigM - bigB % bigM) + bigM) % bigM;
 }
 
 function mulMod(a, b, m) {
     const bigA = BigInt(a);
     const bigB = BigInt(b);
     const bigM = BigInt(m);
-    return Number((bigA % bigM * bigB % bigM) % bigM);
+    return (bigA % bigM * bigB % bigM) % bigM;
 }
+
 function gcd(a, b) {
     const bigA = BigInt(a);
     const bigB = BigInt(b);
@@ -45,7 +45,7 @@ function gcd(a, b) {
         return gcdHelper(y, x % y);
     }
 
-    return Number(gcdHelper(bigA > bigB ? bigA : bigB, bigA > bigB ? bigB : bigA));
+    return gcdHelper(bigA > bigB ? bigA : bigB, bigA > bigB ? bigB : bigA);
 }
 
 function isPrime(n) {
@@ -65,7 +65,7 @@ function divMod(a, b, m) {
         throw new Error("m must be prime for Fermat's Little Theorem to apply");
     }
 
-    if (gcd(b, m) !== 1) {
+    if (gcd(b, m) !== BigInt(1)) {
         throw new Error("b and m must be coprime (gcd(b, m) = 1) for modular division");
     }
 
@@ -73,8 +73,8 @@ function divMod(a, b, m) {
     const bigB = BigInt(b);
     const bigM = BigInt(m);
 
-    const bInverse = BigInt(powerMod(Number(bigB), Number(bigM - BigInt(2)), Number(bigM)));
-    return Number((bigA * bInverse) % bigM);
+    const bInverse = powerMod(bigB, bigM - BigInt(2), bigM);
+    return (bigA * bInverse) % bigM;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -100,9 +100,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
+        
         const a = BigInt(document.getElementById('a').value);
         const b = BigInt(document.getElementById('b').value);
         const m = BigInt(document.getElementById('m').value);
+        
         const currentPage = window.location.pathname.split('/').pop();
         let result;
 
@@ -132,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log('Unknown page');
                     return;
             }
-
         } catch (error) {
             displayError(error.message);
         }
@@ -143,7 +144,7 @@ function displayResult(result) {
     const resultBox = document.getElementById('result-box');
     const resultValue = document.getElementById('result-value');
 
-    resultValue.textContent = result;
+    resultValue.textContent = result.toString();
     resultBox.style.display = 'block';
 }
 
