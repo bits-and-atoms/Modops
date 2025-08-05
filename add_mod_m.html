@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>(a + b) mod m</title>
     <style>
         body {
@@ -186,6 +187,96 @@
         .clear-all-btn:hover {
             background-color: #ff9800;
         }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            font-size: 14px;
+            z-index: 999;
+        }
+
+        .footer a {
+            color: #66ccff;
+            text-decoration: none;
+            margin-top: 5px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+                padding-bottom: 80px;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+
+            .form-container {
+                padding: 25px;
+                max-width: 90%;
+            }
+
+            .input-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .input-group input {
+                margin-bottom: 5px;
+            }
+
+            .clear-btn {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .result-box {
+                max-width: 90%;
+                padding: 20px;
+            }
+
+            .footer {
+                padding: 8px 0;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            input[type="number"] {
+                font-size: 14px;
+            }
+
+            .submit-btn,
+            .clear-all-btn {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 
@@ -211,9 +302,9 @@
             </div>
 
             <div class="form-group">
-                <label for="m">Enter m:</label>
+                <label for="m">Enter m: (default value 1e9+7)</label>
                 <div class="input-group">
-                    <input type="number" id="m" name="m" required>
+                    <input type="number" id="m" name="m">
                     <button type="button" class="clear-btn" data-target="m">Clear</button>
                 </div>
             </div>
@@ -231,6 +322,11 @@
             <button class="close-btn" onclick="closeResult()">×</button>
         </div>
         <div class="result-value" id="result-value"></div>
+    </div>
+
+    <div class="footer">
+        Made by Subham Majumder
+        <a href="https://github.com/bits-and-atoms/Modops" target="_blank">GitHub Repository</a>
     </div>
 
     <script src="modular_calc.js"></script>

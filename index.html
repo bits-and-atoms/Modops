@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modular Arithmetic Operations</title>
     <style>
         body {
@@ -56,6 +57,89 @@
         a:active {
             transform: translateY(1px);
         }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            font-size: 14px;
+            z-index: 999;
+        }
+
+        .footer a {
+            color: #66ccff;
+            text-decoration: none;
+            margin-top: 5px;
+            display: inline;
+            width: auto;
+            padding: 0;
+            border-radius: 0;
+            text-shadow: none;
+            transform: none;
+            transition: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            color: #66ccff;
+        }
+
+        .footer a:visited {
+            color: #66ccff;
+        }
+
+        .footer a:active {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+                padding-bottom: 80px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+
+            li {
+                margin: 8px 0;
+            }
+
+            a {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .footer {
+                padding: 8px 0;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            a {
+                padding: 10px;
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 
@@ -67,7 +151,13 @@
         <li><a href="sub_mod_m.html">(a - b) mod m</a></li>
         <li><a href="mul_mod_m.html">(a × b) mod m</a></li>
         <li><a href="div_mod_m_fermat.html">(a / b) mod m (using Fermat’s Little Theorem)</a></li>
+        <li><a href="a_mod_b.html">a mod b</a></li>
     </ul>
+
+    <div class="footer">
+        Made by Subham Majumder
+        <a href="https://github.com/bits-and-atoms/Modops" target="_blank">GitHub Repository</a>
+    </div>
 </body>
 
 </html>

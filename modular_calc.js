@@ -1,3 +1,9 @@
+function onlyMod(a,b){
+    let bigA = BigInt(a);
+    let bigB = BigInt(b);
+    let ans = BigInt(bigA%bigB);
+    return ans;
+}
 function powerMod(a, b, m) {
     let bigA = BigInt(a);
     let bigB = BigInt(b);
@@ -97,13 +103,21 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('m').value = '';
         });
     }
-
+    const clearAllButton2 = document.getElementById('clear-all2');
+    if (clearAllButton2) {
+        clearAllButton2.addEventListener('click', function () {
+            document.getElementById('a').value = '';
+            document.getElementById('b').value = '';
+        });
+    }
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         
         const a = BigInt(document.getElementById('a').value);
         const b = BigInt(document.getElementById('b').value);
-        const m = BigInt(document.getElementById('m').value);
+        const mElem = document.getElementById('m');
+        const tempmod = mElem?.value;
+        const m = BigInt(tempmod || '1000000007');
         
         const currentPage = window.location.pathname.split('/').pop();
         let result;
@@ -128,6 +142,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     break;
                 case 'div_mod_m_fermat.html':
                     result = divMod(a, b, m);
+                    displayResult(result);
+                    break;
+                case 'a_mod_b.html':
+                    result = onlyMod(a,b);
                     displayResult(result);
                     break;
                 default:
