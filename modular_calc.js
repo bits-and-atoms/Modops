@@ -148,6 +148,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     result = onlyMod(a,b);
                     displayResult(result);
                     break;
+                case 'only_gcd.html':
+                    result = gcd(a,b);
+                    displayResult(result);
+                    break;
                 default:
                     console.log('Unknown page');
                     return;
